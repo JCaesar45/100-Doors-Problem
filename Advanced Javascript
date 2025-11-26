@@ -1,0 +1,52 @@
+// Generate doors dynamically and display them
+const doorsContainer = document.getElementById('doorsGrid');
+const solveButton = document.getElementById('solveBtn');
+
+const totalDoors = 100;
+let doors = [];
+
+// Initialize doors
+function createDoors() {
+  doors = [];
+  doorsContainer.innerHTML = '';
+  for (let i = 1; i <= totalDoors; i++) {
+    const door = document.createElement('div');
+    door.className = 'door';
+    door.textContent = i;
+    doorsContainer.appendChild(door);
+    doors.push({ number: i, isOpen: false, element: door });
+  }
+}
+
+// Determine open doors after all passes
+function getOpenDoors() {
+  for (let i = 0; i < totalDoors; i++) {
+    doors[i].isOpen = false;
+  }
+
+  for (let pass = 1; pass <= totalDoors; pass++) {
+    for (let doorIndex = pass - 1; doorIndex < totalDoors; doorIndex += pass) {
+      doors[doorIndex].isOpen = !doors[doorIndex].isOpen;
+    }
+  }
+}
+
+// Update UI to show open doors
+function displayDoors() {
+  doors.forEach(door => {
+    if (door.isOpen) {
+      door.element.classList.add('open');
+    } else {
+      door.element.classList.remove('open');
+    }
+  });
+}
+
+// Handle button click
+solveButton.addEventListener('click', () => {
+  getOpenDoors();
+  displayDoors();
+});
+
+// Initialize on page load
+createDoors();
