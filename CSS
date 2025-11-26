@@ -1,0 +1,88 @@
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling with a modern, clean look */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Heading styles */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Button styles */
+#solveBtn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+#solveBtn:hover {
+  background-color: #45a049;
+}
+
+/* Grid of doors */
+.doors-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+/* Individual door styles */
+.door {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background-color: #222; /* Closed door color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.door.open {
+  background-color: #ffd700; /* Gold color for open doors */
+  box-shadow: 0 0 15px #ffd700;
+  color: #222;
+  transform: scale(1.05);
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #555;
+}
